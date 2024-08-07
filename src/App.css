@@ -1,0 +1,53 @@
+/* TipTapEditor.css */
+
+/* Style for the editor container */
+.editor-container {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  min-height: 300px;
+  background-color: #f9f9f9;
+  /* Adjust other container styles as needed */
+}
+
+/* Style for the ProseMirror content area */
+.ProseMirror {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333;
+  padding: 10px;
+  background-color: #fff;
+}
+
+/* Customize text formatting */
+.ProseMirror strong {
+  font-weight: bold;
+}
+
+.ProseMirror em {
+  font-style: italic;
+}
+
+.ProseMirror ul,
+.ProseMirror ol {
+  margin-left: 20px;
+}
+
+.ProseMirror blockquote {
+  border-left: 4px solid #ddd;
+  padding-left: 10px;
+  margin: 10px 0;
+  color: #666;
+}
+
+/* Customize links */
+.ProseMirror a {
+  color: #1a73e8;
+  text-decoration: none;
+}
+
+.ProseMirror a:hover {
+  text-decoration: underline;
+}
