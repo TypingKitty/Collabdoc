@@ -7,13 +7,14 @@ const Dashboard = ({ user }) => {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const [docLink, setDocLink] = useState('');
+  const [creatingDoc, setCreatingDoc] = useState(false); // State to track document creation
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchDocuments = async () => {
       setLoading(true);
       setError('');
-      
+
       try {
         const { data } = await axios.get('http://localhost:5000/documents', {
           params: { userId: user.id },
@@ -48,11 +49,30 @@ const Dashboard = ({ user }) => {
     navigate(`/documents/${docId}`);
   };
 
+  const createDocument = async () => {
+    setCreatingDoc(true);
+    try {
+      const { data } = await axios.post('http://localhost:5000/documents', {
+        userId: user.id,
+      });
+      setDocuments((prevDocs) => [data, ...prevDocs]); // Add the new document to the beginning of the list
+      navigate(`/documents/${data.id}`); // Redirect to the new document
+    } catch (error) {
+      console.error('Error creating document:', error);
+      setError('Failed to create document.');
+    } finally {
+      setCreatingDoc(false);
+    }
+  };
+
   return (
     <div>
       <h1>Dashboard</h1>
       {loading && <p>Loading...</p>}
       {error && <p className="error">{error}</p>}
+      <button onClick={createDocument} disabled={creatingDoc}>
+        {creatingDoc ? 'Creating...' : 'Create Document'}
+      </button>
       <ul>
         {documents.length > 0 ? (
           documents.map((doc) => (
