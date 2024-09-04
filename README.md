@@ -25,4 +25,4 @@ To run CollabDoc locally, follow these steps:
 git clone https://github.com/TypingKitty/Collabdoc.git
 cd Collabdoc
 npm install
-npm run dev ```
+npm run dev 
